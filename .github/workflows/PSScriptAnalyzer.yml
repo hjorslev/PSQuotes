@@ -9,7 +9,7 @@ jobs:
       - name: PSScriptAnalyzer checks
         uses: devblackops/github-action-psscriptanalyzer@v2.0.0
         with:
-          rootPath: SteamPS
+          rootPath: PSQuotes
           settingsPath: PSScriptAnalyzerSettings.psd1
           sendComment: true
           repoToken: ${{ secrets.GITHUB_TOKEN }}

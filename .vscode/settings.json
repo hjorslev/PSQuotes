@@ -1,9 +1,21 @@
 {
-    // When enabled, will trim trailing whitespace when you save a file.
-    "files.trimTrailingWhitespace": true,
-    // specifies the location of the explicity ScriptAnalyzer settings file
-    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
-    // specifies the PowerShell coding style used in this project (https://github.com/PoshCode/PowerShellPracticeAndStyle/issues/81)
-    "powershell.codeFormatting.preset":"OTBS"
+  "[powershell]": {
+    "files.encoding": "utf8bom",
+    "files.autoGuessEncoding": true,
+    "editor.tabSize": 4
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "editor.autoIndent": "full",
+  "editor.insertSpaces": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.detectIndentation": true,
+  "files.trimTrailingWhitespace": true,
+  "powershell.codeFormatting.preset": "OTBS",
+  "powershell.scriptAnalysis.settingsPath": "src\\PSScriptAnalyzerSettings.psd1",
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
 }
-

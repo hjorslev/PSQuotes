@@ -21,7 +21,7 @@ labels: Category-Module, Issue-Discussion
 <!-- Please run the below commands and include the output in the code block. -->
 
 ```powershell
-Get-Module -Name SteamPS -ListAvailable |
+Get-Module -Name PSQuotes -ListAvailable |
     Select-Object -Property Name, Version
 
 $PSVersionTable | Out-String
