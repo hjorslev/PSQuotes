@@ -1,7 +1,20 @@
 ﻿function Get-Quote {
+    <#
+    .SYNOPSIS
+    Get a random quote.
+
+    .DESCRIPTION
+    Get a random quote from quotable.io
+
+    .EXAMPLE
+    Get-Quote
+
+    .NOTES
+    Author: fhp.it
+    #>
+
     [CmdletBinding()]
     param (
-
     )
 
     process {
