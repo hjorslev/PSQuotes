@@ -1,4 +1,4 @@
-﻿function Get-Quote {
+﻿function Show-Quote {
     <#
     .SYNOPSIS
     Get a random quote.
@@ -7,7 +7,7 @@
     Get a random quote from quotable.io
 
     .EXAMPLE
-    Get-Quote
+    Show-Quote
 
     .NOTES
     Author: fhp.it
@@ -18,7 +18,6 @@
     )
 
     process {
-        $RandomQuote = Invoke-RestMethod -Uri 'https://api.quotable.io/random'
         if ([string]::IsNullOrWhiteSpace($RandomQuote.author)) {
             $Quote = "$($RandomQuote.content)`v`t$([char]0x2014) Anonymous"
             Write-Host -Object ($Quote -replace '^|\r?(\n)', ('$1    {0} ' -f [char]0x258c)) -ForegroundColor Magenta
