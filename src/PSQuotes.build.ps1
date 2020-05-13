@@ -407,7 +407,7 @@ Add-BuildTask InfraTest {
             Verbose      = $false
             EnableExit   = $false
             OutputFormat = 'NUnitXml'
-            OutputFile   = 'Tests\TestsResults.xml'
+            OutputFile   = '..\..\..\TestsResults.xml'
         }
 
         Write-Build White "      Performing Pester Infrastructure Tests in $($invokePesterParams.path)"

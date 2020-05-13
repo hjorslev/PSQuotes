@@ -15,7 +15,7 @@ jobs:
       - task: PublishTestResults@2
         inputs:
           testRunner: "NUnit"
-          testResultsFiles: "Tests/TestsResults.xml"
+          testResultsFiles: "TestsResults.xml"
           testRunTitle: "pwsh_winLatest"
         # displayName: 'Publish Test Results'
 
@@ -33,7 +33,7 @@ jobs:
       - task: PublishTestResults@2
         inputs:
           testRunner: "NUnit"
-          testResultsFiles: "Tests/TestsResults.xml"
+          testResultsFiles: "TestsResults.xml"
           testRunTitle: "pwsh_ubuntuLatest"
         # displayName: 'Publish Test Results'
 
@@ -52,6 +52,6 @@ jobs:
       - task: PublishTestResults@2
         inputs:
           testRunner: "NUnit"
-          testResultsFiles: "Tests/TestsResults.xml"
+          testResultsFiles: "TestsResults.xml"
           testRunTitle: "pwsh_macOSLatest"
         # displayName: 'Publish Test Results'
