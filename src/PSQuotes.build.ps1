@@ -195,6 +195,8 @@ Add-BuildTask Test {
             EnableExit             = $false
             CodeCoverage           = "$ModuleName\*\*.ps1"
             CodeCoverageOutputFile = "$codeCovPath\CodeCoverage.xml"
+            OutputFormat           = 'NUnitXml'
+            OutputFile             = '..\..\..\TestsResults.xml'
             # CodeCoverage                 = "$ModuleName\*\*.ps1"
             # CodeCoverageOutputFile       = "$codeCovPath\codecoverage.xml"
             # CodeCoverageOutputFileFormat = 'JaCoCo'
@@ -401,13 +403,11 @@ Add-BuildTask InfraTest {
     if (Test-Path -Path $script:InfraTestsPath) {
 
         $invokePesterParams = @{
-            Path         = 'Tests\Infrastructure'
-            Strict       = $true
-            PassThru     = $true
-            Verbose      = $false
-            EnableExit   = $false
-            OutputFormat = 'NUnitXml'
-            OutputFile   = '..\..\..\TestsResults.xml'
+            Path       = 'Tests\Infrastructure'
+            Strict     = $true
+            PassThru   = $true
+            Verbose    = $false
+            EnableExit = $false
         }
 
         Write-Build White "      Performing Pester Infrastructure Tests in $($invokePesterParams.path)"
