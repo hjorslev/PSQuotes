@@ -406,7 +406,7 @@ Add-BuildTask InfraTest {
             PassThru     = $true
             Verbose      = $false
             EnableExit   = $false
-            OutputFormat = NUnitXml
+            OutputFormat = 'NUnitXml'
             OutputFile   = 'Tests\TestsResults.xml'
         }
 
