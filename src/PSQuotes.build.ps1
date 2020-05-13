@@ -129,8 +129,7 @@ Add-BuildTask Analyze {
     if ($scriptAnalyzerResults) {
         $scriptAnalyzerResults | Format-Table
         throw '      One or more PSScriptAnalyzer errors/warnings where found.'
-    }
-    else {
+    } else {
         Write-Build Green '      ...Module Analyze Complete!'
     }
 }#Analyze
@@ -152,8 +151,7 @@ Add-BuildTask AnalyzeTests -After Analyze {
         if ($scriptAnalyzerResults) {
             $scriptAnalyzerResults | Format-Table
             throw '      One or more PSScriptAnalyzer errors/warnings where found.'
-        }
-        else {
+        } else {
             Write-Build White Green '      ...Test Analyze Complete!'
         }
     }
@@ -177,8 +175,7 @@ Add-BuildTask FormattingCheck {
     if ($scriptAnalyzerResults) {
         $scriptAnalyzerResults | Format-Table
         throw '      PSScriptAnalyzer code formatting check did not adhere to {0} standards' -f $scriptAnalyzerParams.Setting
-    }
-    else {
+    } else {
         Write-Build Green '      ...Formatting Analyze Complete!'
     }
 }#FormattingCheck
@@ -233,13 +230,11 @@ Add-BuildTask Test {
             #>
             if ([Int]$coveragePercent -lt $coverageThreshold) {
                 throw ('Failed to meet code coverage threshold of {0}% with only {1}% coverage' -f $coverageThreshold, $coveragePercent)
-            }
-            else {
+            } else {
                 Write-Build Cyan "      $('Covered {0}% of {1} analyzed commands in {2} files.' -f $coveragePercent,$testResults.CodeCoverage.NumberOfCommandsAnalyzed,$testResults.CodeCoverage.NumberOfFilesAnalyzed)"
                 Write-Build Green '      ...Pester Unit Tests Complete!'
             }
-        }
-        else {
+        } else {
             # account for new module build condition
             Write-Build Yellow '      Code coverage check skipped. No commands to execute...'
         }
@@ -372,7 +367,7 @@ Add-BuildTask Build {
     #$private = "$script:ModuleSourcePath\Private"
     $scriptContent = [System.Text.StringBuilder]::new()
     #$powerShellScripts = Get-ChildItem -Path $script:ModuleSourcePath -Filter '*.ps1' -Recurse
-    $powerShellScripts = Get-ChildItem -Path $script:ArtifactsPath -Recurse | Where-Object {$_.Name -match '^*.ps1$'}
+    $powerShellScripts = Get-ChildItem -Path $script:ArtifactsPath -Recurse | Where-Object { $_.Name -match '^*.ps1$' }
     foreach ($script in $powerShellScripts) {
         $null = $scriptContent.Append((Get-Content -Path $script.FullName -Raw))
         $null = $scriptContent.AppendLine('')
@@ -406,11 +401,13 @@ Add-BuildTask InfraTest {
     if (Test-Path -Path $script:InfraTestsPath) {
 
         $invokePesterParams = @{
-            Path       = 'Tests\Infrastructure'
-            Strict     = $true
-            PassThru   = $true
-            Verbose    = $false
-            EnableExit = $false
+            Path         = 'Tests\Infrastructure'
+            Strict       = $true
+            PassThru     = $true
+            Verbose      = $false
+            EnableExit   = $false
+            OutputFormat = NUnitXml
+            OutputFile   = 'Tests\TestsResults.xml'
         }
 
         Write-Build White "      Performing Pester Infrastructure Tests in $($invokePesterParams.path)"
